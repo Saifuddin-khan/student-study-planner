@@ -18,7 +18,7 @@ export default function Notifications() {
   useEffect(() => { fetch(); }, []);
 
   const markRead = async (id) => {
-    await API.put(`/api/notifications/${id}/read`);
+    await API.patch(`/api/notifications/${id}/read`);
     fetch();
   };
 

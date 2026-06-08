@@ -24,8 +24,8 @@ export default function Dashboard() {
 
   useEffect(() => {
     Promise.all([
-      API.get('/api/dashboard'),
-      API.get('/api/streak'),
+      API.get('/api/dashboard/progress'),
+      API.get('/api/streaks'),
     ])
       .then(([dashRes, streakRes]) => {
         setData(dashRes.data);

@@ -17,7 +17,7 @@ export default function Timetable() {
   const fetch = async () => {
     try {
       const [ttRes, subjRes] = await Promise.all([
-        API.get('/api/timetable'),
+        API.get('/api/timetables'),
         API.get('/api/subjects'),
       ]);
       setSlots(ttRes.data);
@@ -44,8 +44,8 @@ export default function Timetable() {
     e.preventDefault();
     const payload = { ...form, subjectId: form.subjectId ? Number(form.subjectId) : null };
     try {
-      if (editSlot) await API.put(`/api/timetable/${editSlot.id}`, payload);
-      else await API.post('/api/timetable', payload);
+      if (editSlot) await API.put(`/api/timetables/${editSlot.id}`, payload);
+      else await API.post('/api/timetables', payload);
       setShowForm(false);
       fetch();
     } catch (err) { alert(err.response?.data?.message || 'Error'); }
@@ -53,7 +53,7 @@ export default function Timetable() {
 
   const deleteSlot = async (id) => {
     if (!confirm('Delete this slot?')) return;
-    await API.delete(`/api/timetable/${id}`);
+    await API.delete(`/api/timetables/${id}`);
     fetch();
   };
 

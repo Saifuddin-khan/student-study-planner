@@ -16,7 +16,7 @@ export default function Register() {
     setError('');
     setLoading(true);
     try {
-      await API.post('/api/auth/register', form);
+      await API.post('/api/auth/signup', form);
       setSuccess('Account created! Redirecting to login...');
       setTimeout(() => navigate('/login'), 1500);
     } catch (err) {

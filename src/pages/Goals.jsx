@@ -42,7 +42,7 @@ export default function Goals() {
   };
 
   const toggleComplete = async (g) => {
-    await API.put(`/api/goals/${g.id}/complete?completed=${!g.completed}`);
+    await API.put(`/api/goals/${g.id}/status?completed=${!g.completed}`);
     fetch();
   };
 

@@ -13,7 +13,7 @@ export default function Profile() {
   const [success, setSuccess] = useState('');
 
   useEffect(() => {
-    API.get('/api/user/profile')
+    API.get('/api/users/profile')
       .then(res => {
         setProfile(res.data);
         setForm({ fullName: res.data.fullName || '', bio: res.data.bio || '', image: res.data.image || '' });
@@ -26,7 +26,7 @@ export default function Profile() {
     e.preventDefault();
     setSaving(true);
     try {
-      const res = await API.put('/api/user/profile', form);
+      const res = await API.put('/api/users/profile', form);
       setProfile(res.data);
       setEditing(false);
       setSuccess('Profile updated!');
